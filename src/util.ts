@@ -37,6 +37,12 @@ const REGION_STEP_RANGES = {
 // Converts Kia's stupid temp codes to celsius
 // From what I can tell it uses a hex index on a list of temperatures starting at 14c ending at 30c with an added H on the end,
 // I'm thinking it has to do with Heat/Cool H/C but needs to be tested, while the car is off, it defaults to 01H
+/**
+ * Converts a Celsius temperature to the protocol specific temp code.
+ *
+ * @deprecated Use {@link celsiusToTempCode} instead. This function is kept
+ *             for backwards compatibility.
+ */
 export const celciusToTempCode = (region: REGION, temperature: number): string => {
   // create a range of floats
   const { start, end, step } = REGION_STEP_RANGES[region];
@@ -52,6 +58,10 @@ export const celciusToTempCode = (region: REGION, temperature: number): string =
   // this needs more testing I guess :P
   return `${hexCode.split('x')[1].toUpperCase()}H`.padStart(3, '0');
 };
+
+// Provide a correctly spelled helper for new code while keeping the old
+// misspelled version for backwards compatibility.
+export const celsiusToTempCode = celciusToTempCode;
 
 export const tempCodeToCelsius = (region: REGION, code: string): number => {
   // create a range

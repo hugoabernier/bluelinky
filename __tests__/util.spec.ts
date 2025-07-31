@@ -1,4 +1,4 @@
-import { tempCodeToCelsius, celciusToTempCode, parseDate, addMinutes } from '../src/util';
+import { tempCodeToCelsius, celciusToTempCode, celsiusToTempCode, parseDate, addMinutes } from '../src/util';
 import { REGIONS } from '../src/constants';
 
 describe('Utility', () => {
@@ -12,10 +12,19 @@ describe('Utility', () => {
   
   it('converts celsius to temp code in CA', () => {
     expect(celciusToTempCode(REGIONS.CA, 18)).toEqual('04H');
+    expect(celsiusToTempCode(REGIONS.CA, 18)).toEqual('04H');
+
     expect(celciusToTempCode(REGIONS.CA, 21.5)).toEqual('0BH');
+    expect(celsiusToTempCode(REGIONS.CA, 21.5)).toEqual('0BH');
+
     expect(celciusToTempCode(REGIONS.CA, 24)).toEqual('10H');
+    expect(celsiusToTempCode(REGIONS.CA, 24)).toEqual('10H');
+
     expect(celciusToTempCode(REGIONS.CA, 28)).toEqual('18H');
+    expect(celsiusToTempCode(REGIONS.CA, 28)).toEqual('18H');
+
     expect(celciusToTempCode(REGIONS.CA, 32)).toEqual('20H');
+    expect(celsiusToTempCode(REGIONS.CA, 32)).toEqual('20H');
   });
 
   it('converts temp code to celsius in EU', () => {
@@ -26,8 +35,13 @@ describe('Utility', () => {
 
   it('converts celcius to temp code in EU', () => {
     expect(celciusToTempCode(REGIONS.EU, 17)).toEqual('06H');
+    expect(celsiusToTempCode(REGIONS.EU, 17)).toEqual('06H');
+
     expect(celciusToTempCode(REGIONS.EU, 20)).toEqual('0CH');
+    expect(celsiusToTempCode(REGIONS.EU, 20)).toEqual('0CH');
+
     expect(celciusToTempCode(REGIONS.EU, 27)).toEqual('1AH');
+    expect(celsiusToTempCode(REGIONS.EU, 27)).toEqual('1AH');
   });
 
   it('parseDate converts string to date', () => {
